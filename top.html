@@ -97,12 +97,12 @@
 
   <!-- page preset: read by src/works/main.js (the query string wins: ?logo= ?size= ?hud= ?glass= ; ?ui=0 = no panel) -->
   <script>
-    // opening settings. Phones: FIXED 2026-10-13 from the client's phone screenshot, UI hidden. PC: still waiting for
-    // confirmation (the designer adjusts with the panel). The query string wins over these.
+    // opening settings, both FIXED 2026-10-13 from the client's screenshots, UI hidden (H / the bottom-right corner
+    // bring the panel back). The query string wins over these.
     (function () {
       var pc = innerWidth >= 900 && innerWidth > innerHeight;
       window.__WK = pc
-        ? { logo: '2d', size: 1, glass: false, hud: false, photo: '1', noise: 'fine', navy: 0.5, intro: 'fix' }
+        ? { logo: '2d', size: 0.85, fade: 0.55, glass: false, hud: false, photo: '1', tint: 0.55, dim: 0.28, navy: 0.8, noise: 'slow', intro: 'mix', float: '1', ui: '0' }
         : { logo: '2d', size: 1.4, fade: 0.55, glass: false, hud: false, photo: '1', tint: 0.3, dim: 0.14, navy: 1, noise: 'film', intro: 'fade', ui: '0' };
     })();
   </script>   <!-- photo slideshow on, no grain, by default (2026-10-13) -->
