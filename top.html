@@ -15,7 +15,7 @@
     // background before first paint (v0.5c: the title's shared space; ?bg=dark | pastel | black, same aliases as main.js)
     (function () { var b = 'dark'; try { var v = new URLSearchParams(location.search).get('bg'); v = ({ space: 'dark', navy: 'dark', grey: 'dark', white: 'pastel' })[v] || v; if (v === 'pastel' || v === 'black') b = v; } catch (e) {} var h = document.documentElement; h.dataset.bg = b; h.dataset.theme = b === 'pastel' ? 'grey' : 'navy'; })();
   </script>
-  <script type="module" crossorigin src="./assets/main-Eyifmvbh.js"></script>
+  <script type="module" crossorigin src="./assets/main-BqsSQNiU.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-BmET7FBL.css">
 </head>
 <body class="works-page">
@@ -96,7 +96,7 @@
   </div>
 
   <!-- page preset: read by src/works/main.js (the query string wins: ?logo= ?size= ?hud= ?glass= ; ?ui=0 = no panel) -->
-  <script>window.__WK = { logo: '2d', size: (innerWidth >= 900 && innerWidth > innerHeight) ? 1 : 1.4,   /* PC ×1 (FB 10/13), phones ×1.4 */ glass: false, hud: false, photo: '1', noise: 'fine', navy: 0.5, intro: 'mix' };</script>   <!-- photo slideshow on, no grain, by default (2026-10-13) -->
+  <script>window.__WK = { logo: '2d', size: (innerWidth >= 900 && innerWidth > innerHeight) ? 1 : 1.4,   /* PC ×1 (FB 10/13), phones ×1.4 */ glass: false, hud: false, photo: '1', noise: 'fine', navy: 0.5, intro: 'fix' };</script>   <!-- photo slideshow on, no grain, by default (2026-10-13) -->
   <!-- study panel: the logo looks, the globe scale, and a button that hides the panel (H brings it back) -->
   <style>.lg{z-index:5;color:#fff;flex-direction:column;align-items:flex-end;gap:10px;font:500 12px/1 Space Grotesk,Zen Kaku Gothic New,sans-serif;display:flex;position:fixed;bottom:18px;right:18px}@media (width<=700px){.lg{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch;background:#060a12b8;border-radius:14px;align-items:stretch;gap:8px;max-height:42vh;padding:10px;bottom:8px;left:8px;right:8px;overflow-y:auto}.lg__row{justify-content:flex-start;max-width:none}.lg button{padding:8px 11px}.lg__scale{flex:100%;justify-content:space-between}.lg__scale input{flex:1;width:auto}}.lg__copied{opacity:0;margin-left:6px;transition:opacity .3s}.lg__copied.is-on{opacity:1}.lg__row{flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:6px;max-width:calc(100vw - 36px);display:flex}.lg button{appearance:none;width:auto;min-width:0;height:auto;font:inherit;white-space:nowrap;color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e148c;border:1px solid #ffffff4d;border-radius:999px;margin:0;padding:9px 14px}.lg button[aria-pressed=true]{color:#0e1620;background:#fff}.lg__scale{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e148c;border:1px solid #ffffff4d;border-radius:999px;align-items:center;gap:10px;padding:8px 14px;display:flex}.lg__scale input{accent-color:#fff;width:160px}.lg__scale output{text-align:right;font-variant-numeric:tabular-nums;min-width:3.2em}[data-nolg] .lg{display:none}.lg-back{z-index:5;color:#ffffffb3;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e1473;border:1px solid #ffffff40;border-radius:50%;width:34px;height:34px;font:600 13px/1 sans-serif;display:none;position:fixed;bottom:18px;right:18px}[data-nolg] .lg-back{display:block}[data-noui] .lg-back{opacity:0;transition:opacity .3s}[data-noui] .lg-back:hover,[data-noui] .lg-back:focus-visible{opacity:1}</style>
   <div class="lg" role="group" aria-label="ロゴの検討">
@@ -130,7 +130,8 @@
       <button type="button" data-intro="fly" aria-pressed="false">カメラ前から</button>
       <button type="button" data-intro="fade" aria-pressed="false">透明から</button>
       <button type="button" data-intro="mixA" aria-pressed="false">両方（前の版）</button>
-      <button type="button" data-intro="mix" aria-pressed="true">両方（調整版）</button>
+      <button type="button" data-intro="mix" aria-pressed="false">両方（調整版）</button>
+      <button type="button" data-intro="fix" aria-pressed="true">FIX版</button>
       <button type="button" data-replay title="もう一度">▶ 再生</button>
       <button type="button" data-float aria-pressed="false">ロゴ：ふわふわ</button>
     </div>
@@ -159,7 +160,7 @@
       const applyPhoto = (on) => { window.__wkBackdrop && window.__wkBackdrop.setPhoto(on ? photoUrl() : null, { amount: +tn.value, dim: +dm.value }); pb.forEach((o) => o.setAttribute('aria-pressed', String((o.dataset.photo === '1') === on))); };
       pb.forEach((b) => b.addEventListener('click', () => applyPhoto(b.dataset.photo === '1')));
       const ib = document.querySelectorAll('.lg [data-intro]');
-      let introKind = q.get('intro') || (window.__WK && window.__WK.intro) || 'mix';
+      let introKind = q.get('intro') || (window.__WK && window.__WK.intro) || 'fix';
       ib.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.intro === introKind)));
       ib.forEach((b) => b.addEventListener('click', () => { introKind = b.dataset.intro; ib.forEach((o) => o.setAttribute('aria-pressed', String(o === b))); window.__wkIntro && window.__wkIntro.play(introKind); }));
       document.querySelector('[data-replay]').addEventListener('click', () => { window.__wkIntro && window.__wkIntro.play(introKind); });
