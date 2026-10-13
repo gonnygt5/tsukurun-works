@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja" data-theme="grey" data-notitle="" data-minui="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>tsukurun トップ案（調整用）</title>
+  <meta name="description" content="tsukurunデジタルクリエイティブコンテスト（tDCC）の受賞作品。2DCG、3DCG、ゲーム、映像。" />
+  <meta name="theme-color" content="#A2A8AE" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>
+    // background before first paint (v0.5c: the title's shared space; ?bg=dark | pastel | black, same aliases as main.js)
+    (function () { var b = 'dark'; try { var v = new URLSearchParams(location.search).get('bg'); v = ({ space: 'dark', navy: 'dark', grey: 'dark', white: 'pastel' })[v] || v; if (v === 'pastel' || v === 'black') b = v; } catch (e) {} var h = document.documentElement; h.dataset.bg = b; h.dataset.theme = b === 'pastel' ? 'grey' : 'navy'; })();
+  </script>
+  <script type="module" crossorigin src="./assets/main-C6XhD4kC.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-BmET7FBL.css">
+</head>
+<body class="works-page">
+  <header class="hdr">
+    <a class="hdr__logo" href="index.html" aria-label="tsukurun トップへ" data-logo></a>
+    <nav class="hdr__nav" id="primary-nav" aria-label="メイン">
+      <a href="index.html#about">About</a>
+      <a href="index.html#make">Make</a>
+      <a href="works.html" class="is-active" aria-current="page">Works</a>
+      <a href="index.html#program">Program</a>
+      <a href="index.html#access">Access</a>
+    </nav>
+    <div class="hdr__right">
+      <button class="matswitch mono" type="button" hidden data-matswitch data-cursor="MAT" aria-label="カッターマットの色を切り替える"><i class="matswitch__chip" aria-hidden="true"></i><span class="matswitch__k">MAT</span><span data-matswitch-label>GREY</span></button>
+      <a class="btn btn--accent" href="https://gunma-tsukurun.jp/reserve/" target="_blank" rel="noopener">予約する<i class="btn__arrow" aria-hidden="true">→</i></a>
+      <button class="hdr__menu" type="button" aria-label="メニュー" aria-controls="primary-nav" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <canvas class="wk-gl" aria-hidden="true"></canvas>
+
+  <main class="wk">
+    <h1 class="wk__title"><span class="wk__k mono">WORKS — tDCC award winners</span><span class="wk__h"><span class="nw">みんなが、</span><br /><span class="nw">つくったもの。</span></span></h1>
+
+    <div class="wk__hover mono" aria-hidden="true"><b data-hover-title></b><span data-hover-meta></span></div>
+
+    <div class="wk__info">
+      <p class="wk__count mono"><b data-count>65</b> WORKS</p>
+      <p class="wk__lead">tsukurunデジタルクリエイティブコンテスト（tDCC）の受賞作品。触って、回して、のぞいてみよう。</p>
+      <p class="wk__src mono">出典：<a href="https://gunma-tsukurun.jp/look/" target="_blank" rel="noopener">tsukurun ポートフォリオ</a></p>
+    </div>
+
+    <!-- one dataset, two views: sphere (explore) and list (find) -->
+    <div class="wk__views" role="tablist" aria-label="表示の切り替え">
+      <button type="button" role="tab" data-view="sphere" aria-selected="true">球体<span class="mono">SPHERE</span></button>
+      <button type="button" role="tab" data-view="list" aria-selected="false">一覧<span class="mono">LIST</span></button>
+    </div>
+    <p class="wk__drag mono"><i></i>DRAG TO ROTATE<span class="pc"> — ドラッグで回す</span></p>
+    <nav class="wk__filters" aria-label="分野で絞り込む" data-filters></nav>
+
+    <section class="wl" aria-label="作品一覧" data-list hidden>
+      <div class="wl__inner">
+        <header class="wl__head">
+          <p class="mono wl__k">WORKS — LIST</p>
+          <h2 class="wl__h">作品一覧</h2>
+          <p class="wl__lead">コンテストの回ごとに、グランプリ → 優秀賞 → 審査員特別賞の順。カードを選ぶと詳細、詳細から球体の中の位置へも移動できます。</p>
+        </header>
+        <div class="wl__groups" data-groups></div>
+        <p class="wl__src mono">出典：<a href="https://gunma-tsukurun.jp/look/" target="_blank" rel="noopener">tsukurun ポートフォリオ（gunma-tsukurun.jp/look/）</a>。実名の作者は苗字のみの表記にしています。</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+    <button class="lb__close mono" type="button" data-close>CLOSE ✕</button>
+    <figure class="lb__fig"><img alt="" data-lb-img /></figure>
+    <div class="lb__body">
+      <p class="lb__awards" data-lb-awards></p>
+      <h2 class="lb__title" id="lb-title" data-lb-title></h2>
+      <dl class="lb__meta">
+        <div><dt class="mono">CREATOR</dt><dd data-lb-by></dd></div>
+        <div><dt class="mono">CATEGORY</dt><dd data-lb-cat></dd></div>
+        <div data-row-theme><dt class="mono">THEME</dt><dd data-lb-theme></dd></div>
+        <div><dt class="mono">TOOLS</dt><dd data-lb-tool></dd></div>
+        <div><dt class="mono">CONTEST</dt><dd data-lb-contest></dd></div>
+      </dl>
+      <details class="lb__comment" data-row-comment>
+        <summary class="mono">審査員コメント</summary>
+        <p data-lb-comment></p>
+      </details>
+      <div class="lb__links" data-lb-links></div>
+      <div class="lb__nav">
+        <button type="button" class="mono" data-prev>← PREV</button>
+        <span class="mono" data-lb-idx></span>
+        <button type="button" class="mono" data-next>NEXT →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- page preset: read by src/works/main.js (the query string wins: ?logo= ?size= ?hud= ?glass= ; ?ui=0 = no panel) -->
+  <script>window.__WK = { logo: '2d', size: 1.4, glass: false, hud: false, photo: '1', noise: 'fine', navy: 0.5, intro: 'mix' };</script>   <!-- photo slideshow on, no grain, by default (2026-10-13) -->
+  <!-- study panel: the logo looks, the globe scale, and a button that hides the panel (H brings it back) -->
+  <style>.lg{z-index:5;color:#fff;flex-direction:column;align-items:flex-end;gap:10px;font:500 12px/1 Space Grotesk,Zen Kaku Gothic New,sans-serif;display:flex;position:fixed;bottom:18px;right:18px}@media (width<=700px){.lg{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch;background:#060a12b8;border-radius:14px;align-items:stretch;gap:8px;max-height:42vh;padding:10px;bottom:8px;left:8px;right:8px;overflow-y:auto}.lg__row{justify-content:flex-start;max-width:none}.lg button{padding:8px 11px}.lg__scale{flex:100%;justify-content:space-between}.lg__scale input{flex:1;width:auto}}.lg__copied{opacity:0;margin-left:6px;transition:opacity .3s}.lg__copied.is-on{opacity:1}.lg__row{flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:6px;max-width:calc(100vw - 36px);display:flex}.lg button{appearance:none;width:auto;min-width:0;height:auto;font:inherit;white-space:nowrap;color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e148c;border:1px solid #ffffff4d;border-radius:999px;margin:0;padding:9px 14px}.lg button[aria-pressed=true]{color:#0e1620;background:#fff}.lg__scale{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e148c;border:1px solid #ffffff4d;border-radius:999px;align-items:center;gap:10px;padding:8px 14px;display:flex}.lg__scale input{accent-color:#fff;width:160px}.lg__scale output{text-align:right;font-variant-numeric:tabular-nums;min-width:3.2em}[data-nolg] .lg{display:none}.lg-back{z-index:5;color:#ffffffb3;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e1473;border:1px solid #ffffff40;border-radius:50%;width:34px;height:34px;font:600 13px/1 sans-serif;display:none;position:fixed;bottom:18px;right:18px}[data-nolg] .lg-back{display:block}[data-noui] .lg-back{opacity:0;transition:opacity .3s}[data-noui] .lg-back:hover,[data-noui] .lg-back:focus-visible{opacity:1}</style>
+  <div class="lg" role="group" aria-label="ロゴの検討">
+    <div class="lg__row">
+      <button type="button" data-look="2d" aria-pressed="true">白ロゴ</button>
+      <button type="button" data-look="cyan" aria-pressed="false">水色ロゴ</button>
+      <button type="button" data-look="porcelain" aria-pressed="false">3D 白磁</button>
+      <button type="button" data-look="glass" aria-pressed="false">3D 白ガラス</button>
+      <button type="button" data-look="cyan3d" aria-pressed="false">3D 水色ガラス</button>
+    </div>
+    <div class="lg__row">
+      <label class="lg__scale">地球儀 <input type="range" min="0.8" max="2.2" step="0.05" value="1.4" data-scale><output data-scale-out>×1.40</output></label>
+      <label class="lg__scale">手前の透け <input type="range" min="0" max="0.9" step="0.05" value="0.55" data-fade><output data-fade-out>0.55</output></label>
+      <button type="button" data-copy title="今の設定を開く URL をコピー（デザイナーさんの決定値の受け渡し用）">この設定の URL をコピー</button><span class="lg__copied" data-copied>コピーしました</span>
+      <button type="button" data-hide title="右下の UI で戻ります（H キーでも）">UI を消す</button>
+    </div>
+    <div class="lg__row">
+      <button type="button" data-photo="0" aria-pressed="true">背景：宇宙</button>
+      <button type="button" data-photo="1" aria-pressed="false">背景：写真＋青（スライド）</button>
+      <label class="lg__scale">青み <input type="range" min="0" max="1" step="0.05" value="0.6" data-tint><output data-tint-out>0.60</output></label>
+      <label class="lg__scale">明るさ <input type="range" min="0.1" max="1.0" step="0.02" value="0.32" data-dim><output data-dim-out>0.32</output></label>
+      <label class="lg__scale">紺の濃さ <input type="range" min="0" max="1" step="0.05" value="0.5" data-navy><output data-navy-out>0.50</output></label>
+      <button type="button" data-noise="none" aria-pressed="false">粒子なし</button>
+      <button type="button" data-noise="fine" aria-pressed="true">細（ゆっくり）</button>
+      <button type="button" data-noise="film" aria-pressed="false">フィルム（静止）</button>
+      <button type="button" data-noise="slow" aria-pressed="false">フィルム（超ゆっくり）</button>
+      <button type="button" data-noise="film2" aria-pressed="false">フィルム（強）</button>
+    </div>
+    <div class="lg__row">
+      <span style="opacity:.7">イントロ</span>
+      <button type="button" data-intro="fly" aria-pressed="false">カメラ前から</button>
+      <button type="button" data-intro="fade" aria-pressed="false">透明から</button>
+      <button type="button" data-intro="mixA" aria-pressed="false">両方（前の版）</button>
+      <button type="button" data-intro="mix" aria-pressed="true">両方（調整版）</button>
+      <button type="button" data-replay title="もう一度">▶ 再生</button>
+      <button type="button" data-float aria-pressed="false">ロゴ：ふわふわ</button>
+    </div>
+  </div>
+  <button type="button" class="lg-back" data-back title="UI を戻す" aria-label="UI を戻す">UI</button>
+  <script>
+    (function () {
+      const q = new URLSearchParams(location.search);
+      if (q.get('ui') === '0') document.documentElement.dataset.nolg = '';   // starts clean; H / the corner button bring the panel back
+      const looks = document.querySelectorAll('.lg [data-look]');
+      const press = (k) => looks.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.look === k)));
+      looks.forEach((b) => b.addEventListener('click', () => { window.__wkLogo && window.__wkLogo.set(b.dataset.look); press(b.dataset.look); }));
+      if (q.get('logo')) press(q.get('logo'));
+      const sl = document.querySelector('[data-scale]'), out = document.querySelector('[data-scale-out]');
+      if (q.get('size')) sl.value = q.get('size');
+      const show = () => { out.value = '×' + (+sl.value).toFixed(2); };
+      show();
+      sl.addEventListener('input', () => { show(); window.__wkGallery && window.__wkGallery.setScale(+sl.value); });
+      const fd = document.querySelector('[data-fade]'), fo = document.querySelector('[data-fade-out]');
+      if (q.get('fade')) fd.value = q.get('fade');
+      fo.value = (+fd.value).toFixed(2);
+      fd.addEventListener('input', () => { fo.value = (+fd.value).toFixed(2); window.__wkGallery && window.__wkGallery.setFrontFade(+fd.value); });
+      document.querySelector('[data-hide]').addEventListener('click', () => { document.documentElement.dataset.nolg = ''; });
+      const pb = document.querySelectorAll('.lg [data-photo]'), tn = document.querySelector('[data-tint]'), tno = document.querySelector('[data-tint-out]'), dm = document.querySelector('[data-dim]'), dmo = document.querySelector('[data-dim-out]');
+      const photoUrl = () => window.__wkPhotos || './bg/students_placeholder.jpg';
+      const applyPhoto = (on) => { window.__wkBackdrop && window.__wkBackdrop.setPhoto(on ? photoUrl() : null, { amount: +tn.value, dim: +dm.value }); pb.forEach((o) => o.setAttribute('aria-pressed', String((o.dataset.photo === '1') === on))); };
+      pb.forEach((b) => b.addEventListener('click', () => applyPhoto(b.dataset.photo === '1')));
+      const ib = document.querySelectorAll('.lg [data-intro]');
+      let introKind = q.get('intro') || (window.__WK && window.__WK.intro) || 'mix';
+      ib.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.intro === introKind)));
+      ib.forEach((b) => b.addEventListener('click', () => { introKind = b.dataset.intro; ib.forEach((o) => o.setAttribute('aria-pressed', String(o === b))); window.__wkIntro && window.__wkIntro.play(introKind); }));
+      document.querySelector('[data-replay]').addEventListener('click', () => { window.__wkIntro && window.__wkIntro.play(introKind); });
+      const fl = document.querySelector('[data-float]');
+      if ((q.get('float') ?? (window.__WK && window.__WK.float)) == '1') fl.setAttribute('aria-pressed', 'true');
+      fl.addEventListener('click', () => { const on = fl.getAttribute('aria-pressed') !== 'true'; fl.setAttribute('aria-pressed', String(on)); window.__wkLogo && window.__wkLogo.setFloat(on); });
+      const G1 = './bg/grain/film_grain_512.png', G2 = './bg/grain/film_grain_512_strong.png';
+      const NOISE = { none: { grain: 0, fine: 0 }, fine: { grain: 0, fine: 0.045, fineSpeed: 0.5 }, film: { grain: 0.13, fine: 0, drift: 0, tile: G1 }, slow: { grain: 0.11, fine: 0, drift: 0.12, tile: G1 }, film2: { grain: 0.17, fine: 0, drift: 0, tile: G2 } };
+      const nv = document.querySelector('[data-navy]'), nvo = document.querySelector('[data-navy-out]');
+      if (q.get('navy')) nv.value = q.get('navy');
+      nvo.value = (+nv.value).toFixed(2);
+      nv.addEventListener('input', () => { nvo.value = (+nv.value).toFixed(2); window.__wkBackdrop && window.__wkNavy && window.__wkBackdrop.setPhoto(photoUrl(), { tint: window.__wkNavy(+nv.value) }); });
+      const nb = document.querySelectorAll('.lg [data-noise]');
+      nb.forEach((b) => b.addEventListener('click', () => { window.__wkBackdrop && window.__wkBackdrop.setPhoto(photoUrl(), NOISE[b.dataset.noise]); nb.forEach((o) => o.setAttribute('aria-pressed', String(o === b))); }));
+      const noise0 = q.get('noise') ?? (window.__WK && window.__WK.noise); if (noise0) nb.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.noise === noise0)));
+      const photoOn = (q.get('photo') ?? (window.__WK && window.__WK.photo)) ; if (photoOn && photoOn !== '0') pb.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.photo === '1')));
+      if (q.get('tint')) tn.value = q.get('tint');
+      tn.addEventListener('input', () => { tno.value = (+tn.value).toFixed(2); window.__wkBackdrop && window.__wkBackdrop.setPhoto(photoUrl(), { amount: +tn.value }); });
+      dm.addEventListener('input', () => { dmo.value = (+dm.value).toFixed(2); window.__wkBackdrop && window.__wkBackdrop.setPhoto(photoUrl(), { dim: +dm.value }); });
+      document.querySelector('[data-back]').addEventListener('click', () => { delete document.documentElement.dataset.nolg; });
+      // the current choices as a URL (opens clean, no panel) — for sending a decision back
+      const pressed = (sel, attr) => { const b = document.querySelector(sel + '[aria-pressed="true"]'); return b ? b.dataset[attr] : null; };
+      document.querySelector('[data-copy]').addEventListener('click', async () => {
+        const p = new URLSearchParams();
+        p.set('ui', '0');
+        p.set('logo', pressed('.lg [data-look]', 'look') || '2d');
+        p.set('size', (+document.querySelector('[data-scale]').value).toFixed(2));
+        p.set('fade', (+document.querySelector('[data-fade]').value).toFixed(2));
+        p.set('photo', pressed('.lg [data-photo]', 'photo') || '1');
+        p.set('tint', (+tn.value).toFixed(2));
+        p.set('dim', (+dm.value).toFixed(2));
+        p.set('navy', (+nv.value).toFixed(2));
+        p.set('noise', pressed('.lg [data-noise]', 'noise') || 'none');
+        p.set('intro', introKind);
+        if (fl.getAttribute('aria-pressed') === 'true') p.set('float', '1');
+        const url = location.origin + location.pathname + '?' + p.toString();
+        try { await navigator.clipboard.writeText(url); } catch (e) { window.prompt('この URL をコピーしてください', url); }
+        const c = document.querySelector('[data-copied]'); c.classList.add('is-on'); setTimeout(() => c.classList.remove('is-on'), 1600);
+      });
+      addEventListener('keydown', (e) => { if (e.code === 'KeyH' || e.key === 'h' || e.key === 'H') {   // e.code: works with Japanese input on
+        e.preventDefault(); if ('nolg' in document.documentElement.dataset) delete document.documentElement.dataset.nolg; else document.documentElement.dataset.nolg = ''; } });
+    })();
+  </script>
+</body>
+</html>
