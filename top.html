@@ -15,7 +15,7 @@
     // background before first paint (v0.5c: the title's shared space; ?bg=dark | pastel | black, same aliases as main.js)
     (function () { var b = 'dark'; try { var v = new URLSearchParams(location.search).get('bg'); v = ({ space: 'dark', navy: 'dark', grey: 'dark', white: 'pastel' })[v] || v; if (v === 'pastel' || v === 'black') b = v; } catch (e) {} var h = document.documentElement; h.dataset.bg = b; h.dataset.theme = b === 'pastel' ? 'grey' : 'navy'; })();
   </script>
-  <script type="module" crossorigin src="./assets/main-BaOhoNoX.js"></script>
+  <script type="module" crossorigin src="./assets/main-CLIZUTeQ.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/main-BmET7FBL.css">
 </head>
 <body class="works-page">
@@ -96,7 +96,16 @@
   </div>
 
   <!-- page preset: read by src/works/main.js (the query string wins: ?logo= ?size= ?hud= ?glass= ; ?ui=0 = no panel) -->
-  <script>window.__WK = { logo: '2d', size: (innerWidth >= 900 && innerWidth > innerHeight) ? 1 : 1.4,   /* PC ×1 (FB 10/13), phones ×1.4 */ glass: false, hud: false, photo: '1', noise: 'fine', navy: 0.5, intro: 'fix' };</script>   <!-- photo slideshow on, no grain, by default (2026-10-13) -->
+  <script>
+    // opening settings. Phones: FIXED 2026-10-13 from the client's phone screenshot, UI hidden. PC: still waiting for
+    // confirmation (the designer adjusts with the panel). The query string wins over these.
+    (function () {
+      var pc = innerWidth >= 900 && innerWidth > innerHeight;
+      window.__WK = pc
+        ? { logo: '2d', size: 1, glass: false, hud: false, photo: '1', noise: 'fine', navy: 0.5, intro: 'fix' }
+        : { logo: '2d', size: 1.4, fade: 0.55, glass: false, hud: false, photo: '1', tint: 0.3, dim: 0.14, navy: 1, noise: 'film', intro: 'fade', ui: '0' };
+    })();
+  </script>   <!-- photo slideshow on, no grain, by default (2026-10-13) -->
   <!-- study panel: the logo looks, the globe scale, and a button that hides the panel (H brings it back) -->
   <style>.lg{z-index:5;color:#fff;flex-direction:column;align-items:flex-end;gap:10px;font:500 12px/1 Space Grotesk,Zen Kaku Gothic New,sans-serif;display:flex;position:fixed;bottom:18px;right:18px}@media (width<=700px){.lg{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch;background:#060a12b8;border-radius:14px;align-items:stretch;gap:8px;max-height:42vh;padding:10px;bottom:8px;left:8px;right:8px;overflow-y:auto}.lg__row{justify-content:flex-start;max-width:none}.lg button{padding:8px 11px}.lg__scale{flex:100%;justify-content:space-between}.lg__scale input{flex:1;width:auto}}.lg__copied{opacity:0;margin-left:6px;transition:opacity .3s}.lg__copied.is-on{opacity:1}.lg__row{flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:6px;max-width:calc(100vw - 36px);display:flex}.lg button{appearance:none;width:auto;min-width:0;height:auto;font:inherit;white-space:nowrap;color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e148c;border:1px solid #ffffff4d;border-radius:999px;margin:0;padding:9px 14px}.lg button[aria-pressed=true]{color:#0e1620;background:#fff}.lg__scale{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e148c;border:1px solid #ffffff4d;border-radius:999px;align-items:center;gap:10px;padding:8px 14px;display:flex}.lg__scale input{accent-color:#fff;width:160px}.lg__scale output{text-align:right;font-variant-numeric:tabular-nums;min-width:3.2em}[data-nolg] .lg{display:none}.lg-back{z-index:5;color:#ffffffb3;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:#0a0e1473;border:1px solid #ffffff40;border-radius:50%;width:34px;height:34px;font:600 13px/1 sans-serif;display:none;position:fixed;bottom:18px;right:18px}[data-nolg] .lg-back{display:block}[data-noui] .lg-back{opacity:0;transition:opacity .3s}[data-noui] .lg-back:hover,[data-noui] .lg-back:focus-visible{opacity:1}</style>
   <div class="lg" role="group" aria-label="ロゴの検討">
@@ -140,7 +149,7 @@
   <script>
     (function () {
       const q = new URLSearchParams(location.search);
-      if (q.get('ui') === '0') document.documentElement.dataset.nolg = '';   // starts clean; H / the corner button bring the panel back
+      if ((q.get('ui') ?? (window.__WK && window.__WK.ui)) === '0') document.documentElement.dataset.nolg = '';   // starts clean (phones by default); H / the corner button bring the panel back
       const looks = document.querySelectorAll('.lg [data-look]');
       const press = (k) => looks.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.look === k)));
       looks.forEach((b) => b.addEventListener('click', () => { window.__wkLogo && window.__wkLogo.set(b.dataset.look); press(b.dataset.look); }));
@@ -151,7 +160,7 @@
       show();
       sl.addEventListener('input', () => { show(); window.__wkGallery && window.__wkGallery.setScale(+sl.value); });
       const fd = document.querySelector('[data-fade]'), fo = document.querySelector('[data-fade-out]');
-      if (q.get('fade')) fd.value = q.get('fade');
+      fd.value = q.get('fade') || (window.__WK && window.__WK.fade) || fd.value;
       fo.value = (+fd.value).toFixed(2);
       fd.addEventListener('input', () => { fo.value = (+fd.value).toFixed(2); window.__wkGallery && window.__wkGallery.setFrontFade(+fd.value); });
       document.querySelector('[data-hide]').addEventListener('click', () => { document.documentElement.dataset.nolg = ''; });
@@ -170,14 +179,17 @@
       const G1 = './bg/grain/film_grain_512.png', G2 = './bg/grain/film_grain_512_strong.png';
       const NOISE = { none: { grain: 0, fine: 0 }, fine: { grain: 0, fine: 0.045, fineSpeed: 0.5 }, film: { grain: 0.13, fine: 0, drift: 0, tile: G1 }, slow: { grain: 0.11, fine: 0, drift: 0.12, tile: G1 }, film2: { grain: 0.17, fine: 0, drift: 0, tile: G2 } };
       const nv = document.querySelector('[data-navy]'), nvo = document.querySelector('[data-navy-out]');
-      if (q.get('navy')) nv.value = q.get('navy');
+      nv.value = q.get('navy') || (window.__WK && window.__WK.navy) || nv.value;
       nvo.value = (+nv.value).toFixed(2);
       nv.addEventListener('input', () => { nvo.value = (+nv.value).toFixed(2); window.__wkBackdrop && window.__wkNavy && window.__wkBackdrop.setPhoto(photoUrl(), { tint: window.__wkNavy(+nv.value) }); });
       const nb = document.querySelectorAll('.lg [data-noise]');
       nb.forEach((b) => b.addEventListener('click', () => { window.__wkBackdrop && window.__wkBackdrop.setPhoto(photoUrl(), NOISE[b.dataset.noise]); nb.forEach((o) => o.setAttribute('aria-pressed', String(o === b))); }));
       const noise0 = q.get('noise') ?? (window.__WK && window.__WK.noise); if (noise0) nb.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.noise === noise0)));
       const photoOn = (q.get('photo') ?? (window.__WK && window.__WK.photo)) ; if (photoOn && photoOn !== '0') pb.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.photo === '1')));
-      if (q.get('tint')) tn.value = q.get('tint');
+      tn.value = q.get('tint') || (window.__WK && window.__WK.tint) || tn.value;
+      tno.value = (+tn.value).toFixed(2);
+      dm.value = q.get('dim') || (window.__WK && window.__WK.dim) || dm.value;
+      dmo.value = (+dm.value).toFixed(2);
       tn.addEventListener('input', () => { tno.value = (+tn.value).toFixed(2); window.__wkBackdrop && window.__wkBackdrop.setPhoto(photoUrl(), { amount: +tn.value }); });
       dm.addEventListener('input', () => { dmo.value = (+dm.value).toFixed(2); window.__wkBackdrop && window.__wkBackdrop.setPhoto(photoUrl(), { dim: +dm.value }); });
       document.querySelector('[data-back]').addEventListener('click', () => { delete document.documentElement.dataset.nolg; });
