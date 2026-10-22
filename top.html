@@ -15,8 +15,8 @@
     // background before first paint (v0.5c: the title's shared space; ?bg=dark | pastel | black, same aliases as main.js)
     (function () { var b = 'dark'; try { var v = new URLSearchParams(location.search).get('bg'); v = ({ space: 'dark', navy: 'dark', grey: 'dark', white: 'pastel' })[v] || v; if (v === 'pastel' || v === 'black') b = v; } catch (e) {} var h = document.documentElement; h.dataset.bg = b; h.dataset.theme = b === 'pastel' ? 'grey' : 'navy'; })();
   </script>
-  <script type="module" crossorigin src="./assets/main-BPILMaZe.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-BmET7FBL.css">
+  <script type="module" crossorigin src="./assets/main-CmVUf9xu.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-RwUSP7GJ.css">
 </head>
 <body class="works-page">
   <header class="hdr">
@@ -67,6 +67,7 @@
         <p class="wl__src mono">出典：<a href="https://gunma-tsukurun.jp/look/" target="_blank" rel="noopener">tsukurun ポートフォリオ（gunma-tsukurun.jp/look/）</a>。実名の作者は苗字のみの表記にしています。</p>
       </div>
     </section>
+    <button class="wl__close mono" type="button" data-list-close aria-label="一覧を閉じて球体に戻る">CLOSE ✕</button>
   </main>
 
   <div class="lb" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
