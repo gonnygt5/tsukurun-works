@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja" data-blur="18">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>tsukurun — つくる場所は、すぐそばに。（地図 v0.5h 試作・なぞって素材切替）</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <script>
+    // ?bg=dark (default) | pastel | black ; ?ui=0 hides all text ; ?still=1 all labels, no motion ; ?base=l1|l4|l4b the blue glass ; ?auto=0 no idle auto-stroke
+    (function () {
+      var q = new URLSearchParams(location.search), bg = q.get('bg');
+      if (bg === 'space') bg = 'dark';
+      if (bg === 'white') bg = 'pastel';
+      document.documentElement.dataset.bg = bg === 'pastel' || bg === 'black' ? bg : 'dark';
+      if (q.get('ui') === '0') document.documentElement.classList.add('no-ui');
+    })();
+  </script>
+  <script type="module" crossorigin src="./assets/asset-CbO5k37n.js"></script>
+  <script type="module" crossorigin src="./assets/Backdrop-D_4hYVfo.js"></script>
+  <script type="module" crossorigin src="./assets/map05f-page-DKUJYKjd.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/map05f-page-DBNxZyGG.css">
+  <link rel="stylesheet" crossorigin href="./assets/jellymap-3FwRRrJK.css">
+  <link rel="stylesheet" crossorigin href="./assets/map05c-DFsMXuDB.css">
+</head>
+<body>
+  <div class="jm-pad" aria-hidden="true"><p class="jm-note">↓ SCROLL</p></div>
+
+  <section class="jm" aria-labelledby="jm-h">
+    <div class="jm__sticky">
+      <canvas class="jm__gl" aria-hidden="true"></canvas>
+      <div class="mc-stage" aria-hidden="true">
+        <div class="mc-map">
+          <img class="mc-glow" alt="" decoding="async" />
+          <div class="mc-body">
+            <canvas class="mc-mix"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="jm__tags" aria-hidden="true"></div>
+      <p class="mt-mat" aria-hidden="true">TRACE <span class="mt-mat__arrow">→</span> <span class="mt-mat__name">PAINT</span></p>
+      <div class="mt-base" role="group" aria-label="ベースの青（比較用）">
+        <span class="mt-base__lb">BASE</span>
+        <button type="button" data-base="l1">L1 稜線</button>
+        <button type="button" data-base="l4">L4 なめらか</button>
+        <button type="button" data-base="l4b">L4+ 起伏</button>
+      </div>
+      <div class="jm__copy">
+        <h2 class="jm__h" id="jm-h">つくる場所は、すぐそばに。</h2>
+        <ul class="jm__list" data-list="main"></ul>
+        <p class="jm__sub">高校サテライト</p>
+        <ul class="jm__list jm__list--sat" data-list="sat"></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="jm-pad jm-pad--end" aria-hidden="true"><p class="jm-note">END</p></div>
+</body>
+</html>
